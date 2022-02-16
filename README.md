@@ -127,8 +127,14 @@ network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-javascript
 test-network 디렉토리 내에서 ./network down 을 통해 혹시 네트워크가 열려있었거나 돌아가는 컨테이너들을 하는 것을을 닫아줍니다. 
 
 - ./network up
+![1번](https://user-images.githubusercontent.com/88940298/154184717-5f2c7f04-2e8c-498d-8a8c-9a8086cc14bb.png)
+
+
 - test network 의 구성은 2개의 피어, 하나의 오더러, 하나의 클라이어트입니다.
 - docker ps -a 명령어로 컨테이너를 확인할 수 있습니다. 
+
+![2번](https://user-images.githubusercontent.com/88940298/154184755-5ca6b24f-1078-46e5-b345-2faa95ba77dd.png)
+
 - docker 명령어도 파악을 해두셔야 하는데 ps 는 실행하는 컨테이너 목록을 보여주고 -a 옵션은 종료되었던 컨테이너 목록까지 확인할 수 있습니다.
 
 ## 채널생성 
@@ -139,7 +145,13 @@ test-network 디렉토리 내에서 ./network down 을 통해 혹시 네트워�
 ./network.sh createChannel 
 ```
 - defalut 채널명은 myChannel 입니다. -c 옵션을 추어 변경 가능합니다. 
+![3번](https://user-images.githubusercontent.com/88940298/154184807-56b15441-8de5-4ad4-97e4-65c1f7fab550.png)
+
+
 - 채널2도 참여가 되고 각 조직에 앵커 피어들이 설치가 됩니다. 
+
+![4번](https://user-images.githubusercontent.com/88940298/154184831-b67023a6-3e5b-4130-b419-d11298a64e01.png)
+
 
 ## 채널에서 체인코드 시작하기
 - 하이퍼레저 패브릭에서 스마트 컨트랙트는 '체인코드'라고 불립다. 이를 통해 채널의 원장과 상호작용할 수가 있습니다. 
@@ -147,13 +159,22 @@ test-network 디렉토리 내에서 ./network down 을 통해 혹시 네트워�
 ./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go
 ```
 - 이름은 basic 위치는 ../asset-transfer-basic/chaincode-go 언어는 go 로 한다는 의미입니다.
+![5번](https://user-images.githubusercontent.com/88940298/154184860-92f5eceb-f522-452a-b38b-71f3f9083831.png)
+
+
 - 체인코드를 설치할 때 각 채널의 맴버들에 동의가 필요합니다. 필요한 수 만큼의 동의를 얻었을 때에 체인 코드의 정의가 채널에 커밋됩니다.
+
+![6번](https://user-images.githubusercontent.com/88940298/154184897-d5491690-6434-416c-9775-47162f403b5d.png)
+
 - 다음과 같이 합의를 걸칩니다. 
 ##  네트워크와 상호작용하기
 - 피어의 CLI(Command Line Interface)를 통하여 네트워크와 상호작용할 수 있습니다
 - CLI 를 통해 invoke(원장 업데이트 가능), 채널 업데이트/설치, 그리고 새로운 스마트 컨트랙트도 구현할 수 있습니다.
 - 일단 PATH 추가를 더 해야합니다. 
 - 그전에 yaml 파일에 대해 모르시는 분들도 있으실 거 같아 간단히 설명하자면, xml과 json 과 같이 데이터 포맷 형식입니다. yyyy-mm-dd 로 표현하냐 yyyy.mm.dd로 표현하냐를 정의해놓은 파일인데 yaml 은 xml과 json보다 가독성이 좋은 형식입니다. 아래 비교 사진을 통해 파악할 수 있습니다.
+
+![7번](https://user-images.githubusercontent.com/88940298/154184949-a61ea2d1-ce8b-4f70-9660-c8c90fcf1d54.png)
+
 - 그럼 tset-network 디렉토리에 있는 걸 확인하고 다음을 입력해줍니다. (환경설정 때 했는데 하지 않으신 분들은 해주세요)
 ```
 export PATH=${PWD}/../bin:$PATH
@@ -172,6 +193,9 @@ export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.e
 
 export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp export CORE_PEER_ADDRESS=localhost:7051
 ```
+![8번](https://user-images.githubusercontent.com/88940298/154184970-14f05fa0-29fc-48ce-bfb0-f3163de181d4.png)
+
+
 - test-network 안에 organizations 폴더를 확인하시면 됩니다. 
 - 이제 아래의 명령어를 통해서 원장을 초기화 할 수 있습니다. 
 ```
@@ -241,5 +265,6 @@ peer chaincode query -C mychannel -n basic -c '{"Args":["ReadAsset","asset6"]}'
 ```
 ./network.sh down
 ```
+![9번](https://user-images.githubusercontent.com/88940298/154185003-69ae186c-de2e-4917-955d-452aedd08c1b.png)
 
 
