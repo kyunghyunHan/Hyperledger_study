@@ -1,5 +1,5 @@
 # Hyperledger_study
-
+# 하이퍼레저 패브릭 공부
 - 환경 Ubuntu18.04 LTS 
 - 설치
 - - Git
@@ -130,15 +130,15 @@ test-network 디렉토리 내에서 ./network down 을 통해 혹시 네트워�
 ![1번](https://user-images.githubusercontent.com/88940298/154184717-5f2c7f04-2e8c-498d-8a8c-9a8086cc14bb.png)
 
 
-- test network 의 구성은 2개의 피어, 하나의 오더러, 하나의 클라이어트입니다.
-- docker ps -a 명령어로 컨테이너를 확인할 수 있습니다. 
+- test network 의 구성은 2개의 피어, 하나의 오더러, 하나의 클라이어트
+- docker ps -a 명령어로 컨테이너를 확인 
 
 ![2번](https://user-images.githubusercontent.com/88940298/154184755-5ca6b24f-1078-46e5-b345-2faa95ba77dd.png)
 
 - docker 명령어도 파악을 해두셔야 하는데 ps 는 실행하는 컨테이너 목록을 보여주고 -a 옵션은 종료되었던 컨테이너 목록까지 확인할 수 있습니다.
 
 ## 채널생성 
-- 채널은 조직과 조직 간의 연결 입니다. 이는 제네시스 블록에 권한이 저장되어 있는데 이로 권한 판단을 합니다. 
+- 채널은 조직과 조직 간의 연결 입니다.제네시스 블록에 권한이 저장되어 있는데 이로 권한 판단을 합니다. 
 - 저희는 두 개의 조직 org1, org2 를 가지고 있습니다. 
 - 이제 network.sh 를 통해 채널을 org1, org2 사이에 채널을 만들고 그들의 피어를 채널에 join 시킬 겁니다. 
 ```
@@ -154,7 +154,7 @@ test-network 디렉토리 내에서 ./network down 을 통해 혹시 네트워�
 
 
 ## 채널에서 체인코드 시작하기
-- 하이퍼레저 패브릭에서 스마트 컨트랙트는 '체인코드'라고 불립다. 이를 통해 채널의 원장과 상호작용할 수가 있습니다. 
+- 하이퍼레저 패브릭에서 스마트 컨트랙트는 '체인코드'라고 불립니다. 이를 통해 채널의 원장과 상호작용할 수가 있습니다. 
 ```
 ./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go
 ```
@@ -175,7 +175,7 @@ test-network 디렉토리 내에서 ./network down 을 통해 혹시 네트워�
 
 ![7번](https://user-images.githubusercontent.com/88940298/154184949-a61ea2d1-ce8b-4f70-9660-c8c90fcf1d54.png)
 
-- 그럼 tset-network 디렉토리에 있는 걸 확인하고 다음을 입력해줍니다. (환경설정 때 했는데 하지 않으신 분들은 해주세요)
+- 그럼 tset-network 디렉토리에 있는 걸 확인하고 다음을 입력해줍니다.
 ```
 export PATH=${PWD}/../bin:$PATH
 아래도 설정해줍니다. 
@@ -232,7 +232,7 @@ peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.exa
 ```
 
 - 이 명령어 후 다시 GetAllAsset을 치면 다음과 같이 asset6 의 소유자가 Christopher로 변한 것을 확인할 수 있습니다. 
-- 조직 2에서 이 에셋을 확인을 해보겠습니다. 채널로 엮었으니 같은 원장이 보여야하겠죠?
+- 조직 2에서 이 에셋을 확인을 해보겠습니다. 
 - 조직 1과 동일하게 환경 설정을 해줍니다. 
 ```
 # Environment variables for Org2
