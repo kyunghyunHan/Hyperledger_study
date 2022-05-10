@@ -2,6 +2,15 @@
 # 하이퍼레저 패브릭 공부
 - 환경 Ubuntu18.04 LTS 
 - 설치
+
+- - sudo 
+```
+apt install sudo.
+```
+- - wget 
+```
+apt install wget
+```
 - - Git
 ```
 apt-get install git
